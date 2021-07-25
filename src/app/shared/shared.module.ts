@@ -8,7 +8,7 @@ import { ServicesModule } from './services/services.module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, ComponentsModule, ServicesModule, DirectivesModule],
+  imports: [CommonModule, ComponentsModule, ServicesModule, DirectivesModule, ],
   exports: [CommonModule, ComponentsModule, ServicesModule, DirectivesModule],
 })
 export class SharedModule {
