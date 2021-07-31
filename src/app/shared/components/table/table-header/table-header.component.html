@@ -11,12 +11,9 @@
           uppercase
           tracking-wider
         "
-        *ngFor="let i of namefield; let in = index"
+        *ngFor="let title of titles"
       >
-        {{namefield[in]}}
-      </th>
-      <th scope="col" class="relative px-6 py-3">
-        <span class="sr-only">Edit</span>
+      <span [ngClass]= "{'sr-only' : !title.visible}"> {{title.text}} </span>
       </th>
     </tr>
 </thead>

@@ -18,6 +18,7 @@ import { TableTdComponent } from './table/table-td/table-td.component';
 import { BtnComponent } from './btn/btn.component';
 import { TableFooterComponent } from './table/table-footer/table-footer.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import { InputComponent } from './input/input.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
     TableTdComponent,
     BtnComponent,
     TableFooterComponent,
+    InputComponent,
     
   ],
   imports: [CommonModule, RouterModule, NgbPaginationModule],
@@ -58,6 +60,7 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
     TableTdComponent,
     BtnComponent,
     TableFooterComponent,
+    NgbPaginationModule,
   ],
 })
 export class ComponentsModule {}

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Persons } from './@types/table-td.model';
 
 @Component({
   selector: 'app-table-td',
@@ -7,14 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TableTdComponent implements OnInit {
 
-  @Input() person: {
-      "name": string,
-      "title": string,
-      "department": string,
-      "role": string,
-      "email": string,
-      "image": string,
-  };
+  @Input() person: Persons;
 
   constructor() { }
 

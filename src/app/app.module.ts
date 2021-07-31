@@ -6,11 +6,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './core/app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, ComponentsModule, NgbModule, NgbPaginationModule, ],
+  imports: [BrowserModule, AppRoutingModule, ComponentsModule, NgbModule, ],
   providers: [],
   bootstrap: [AppComponent],
 })

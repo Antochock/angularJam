@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TableTitle } from './@types/table-header.model';
 
 @Component({
   selector: 'app-table-header',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table-header.component.scss']
 })
 export class TableHeaderComponent implements OnInit {
-  namefield = ['Name','Title','Status','Role']
+
+  @Input() titles: TableTitle[];
+
   constructor() { }
 
   ngOnInit(): void {

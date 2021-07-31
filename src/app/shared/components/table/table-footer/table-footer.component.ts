@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Persons } from '../table-td/@types/table-td.model';
 
 
 
@@ -9,11 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableFooterComponent implements OnInit {
 
+  @Input() page: number;
+  @Input() pageSize: number;
+  @Input() person: Persons[];
+  @Output() pageEvent = new EventEmitter<number>();
+
   constructor() { }
 
-  currentPage = 1;
-
   ngOnInit(): void {
+  }
+  pageChange(page:number){
+    this.pageEvent.emit(page);
   }
 
 }
