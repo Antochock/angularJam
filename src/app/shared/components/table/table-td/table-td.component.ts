@@ -1,5 +1,5 @@
+import { Member } from './../../../models/member.model';
 import { Component, Input, OnInit } from '@angular/core';
-import { Persons } from './@types/table-td.model';
 
 @Component({
   selector: 'app-table-td',
@@ -8,7 +8,7 @@ import { Persons } from './@types/table-td.model';
 })
 export class TableTdComponent implements OnInit {
 
-  @Input() person: Persons;
+  @Input() person: Member;
 
   constructor() { }
 

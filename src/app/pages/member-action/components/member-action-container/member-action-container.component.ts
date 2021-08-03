@@ -1,6 +1,8 @@
-import { InputInfo } from './@types/member-action-container.model';
+import { State } from './../../../../shared/models/state.model';
+import { MemberService } from './../../../../shared/services/member.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControlName, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-member-action-container',
@@ -10,72 +12,51 @@ import { FormBuilder, FormControlName, FormGroup } from '@angular/forms';
 export class MemberActionContainerComponent implements OnInit {
 
   form: FormGroup;
+  state: State;
+  actionTitle: string;
 
-  constructor(private formBuilder: FormBuilder) { }
-
-
-  formField: InputInfo[]= [{
-      name: 'first-name',
-      title: 'First Name',
-      type: 'text',
-      formControl: 'firstName',
-  }
-  {
-    name: 'last-name',
-    title: 'Last Name',
-    type: 'text',
-    formControl: 'lastName',
-}
-{
-  name: 'email-adress',
-  title: 'Email Adress',
-  type: 'text',
-  formControl: 'firstName',
-}
-{
-  name: 'first-name',
-  title: 'First Name',
-  type: 'text',
-  formControl: 'firstName',
-}
-{
-  name: 'first-name',
-  title: 'First Name',
-  type: 'text',
-  formControl: 'firstName',
-}
-{
-  name: 'first-name',
-  title: 'First Name',
-  type: 'text',
-  formControl: 'firstName',
-}
-{
-  name: 'first-name',
-  title: 'First Name',
-  type: 'text',
-  formControl: 'firstName',
-}
-{
-  name: 'first-name',
-  title: 'First Name',
-  type: 'text',
-  formControl: 'firstName',
-}    
-]
+  constructor(private router: Router, private formBuilder: FormBuilder, public memberService: MemberService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.initView();
     this.initForm();
   }
+
+  initView(){
+    this.state = this.activatedRoute.snapshot.data.state;
+    this.actionTitle = this.state === State.Create ? 'Create' : 'Update';
+  }
+
+
   initForm(): void{
     this.form = this.formBuilder.group(
       {
-        firstName: this.formBuilder.control(null),
+        firstName: this.formBuilder.control(null,[Validators.required]),
+        lastName: this.formBuilder.control(null,[Validators.required]),
+        image: this.formBuilder.control(null,),
+        email: this.formBuilder.control(null,[Validators.required]),
+        title: this.formBuilder.control(null,[Validators.required]),
+        country: this.formBuilder.control(null),
+        streetAdress: this.formBuilder.control(null),
+        city: this.formBuilder.control(null),
+        state: this.formBuilder.control(null),
+        zip: this.formBuilder.control(null),
       }
     )
+    if (this.state === State.Edit){
+      const member = this.memberService.getMember(
+        this.activatedRoute.snapshot.params.id
+      );
+      this.form.patchValue(member);
+    }
   }
-  action(){
-    console.log(this.form.value);
+  
+  action(): void{
+    if (this.state === State.Edit){
+      this.memberService.editMember(this.activatedRoute.snapshot.params.id, this.form.value);
+    }else{
+    this.memberService.addMember(this.form.value);}
+    this.router.navigate(["/dashboard"])
   }
 
 }

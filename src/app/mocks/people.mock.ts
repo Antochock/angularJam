@@ -1,0 +1,28 @@
+export const persons = [
+    {
+    id: "1",
+    image: "https://randomuser.me/api/portraits/med/women/90.jpg",
+    firstName: "Jane",
+    lastName: "Cooper",
+    email: "jane.cooper@example.com",
+    title: "Frontend developer",
+    country: "USA",
+    streetAdress: "Bark st. 12",
+    city: "New-York",
+    state: "IDK",
+    zip: "random",
+    },
+    {
+      id: "2",
+      image: "https://randomuser.me/api/portraits/med/women/70.jpg",
+      firstName: "Vane",
+      lastName: "Sooper",
+      email: "vane.cooper@example.com",
+      title: "Backend developer",
+      country: "Canada",
+      streetAdress: "Rark st. 12",
+      city: "Old-York",
+      state: "IDK",
+      zip: "random",
+      },
+  ]

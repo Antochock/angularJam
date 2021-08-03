@@ -61,6 +61,7 @@ import { InputComponent } from './input/input.component';
     BtnComponent,
     TableFooterComponent,
     NgbPaginationModule,
+    InputComponent,
   ],
 })
 export class ComponentsModule {}

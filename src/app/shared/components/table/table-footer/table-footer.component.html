@@ -60,9 +60,9 @@ class="
   <div>
     <p class="text-sm text-gray-700">
       Showing
-      <span class="font-medium">{{page}}</span>
+      <span class="font-medium">{{firstItem()}}</span>
       to
-      <span class="font-medium">{{page * pageSize}}</span>
+      <span class="font-medium">{{lastItem(person)}}</span>
       of
       <span class="font-medium">{{person.length}}</span>
       results
@@ -81,7 +81,7 @@ class="
       "
       aria-label="Pagination"
     >
-    <ngb-pagination [collectionSize]='person.length' [page]= page [pageSize]= pageSize (pageChange)= pageChange(page)></ngb-pagination>
+    <ngb-pagination [collectionSize]='person.length' [page]= 'page' [pageSize]= 'pageSize' (pageChange)='pageChange($event)' ></ngb-pagination>
     </nav>
   </div>
 </div>

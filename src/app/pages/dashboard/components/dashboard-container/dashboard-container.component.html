@@ -26,12 +26,12 @@
                 <app-table>
                     <app-table-header [titles]=tableHeaders></app-table-header>
                     <app-table-body>
-                        <app-table-tr *ngFor = 'let person of persons| slice: (page-1) * pageSize : page * pageSize' (pageChange) = changePage($event) >
+                        <app-table-tr *ngFor = 'let person of memberService.persons| slice: (this.pagination.page-1) * this.pagination.pageSize : this.pagination.page * this.pagination.pageSize' >
                             <app-table-td [person] = person></app-table-td>
                         </app-table-tr>
                     </app-table-body>
                 </app-table>
-                <app-table-footer [page]= 'page' [pageSize] = 'pageSize'[person] = 'persons' ></app-table-footer>
+                <app-table-footer [person] = 'persons'></app-table-footer>
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Persons } from '../table-td/@types/table-td.model';
+import { PaginationService } from './../../../services/pagination.service';
+import { Member } from './../../../models/member.model';
+import { Component, Input, OnInit, } from '@angular/core';
+
 
 
 
@@ -10,17 +12,22 @@ import { Persons } from '../table-td/@types/table-td.model';
 })
 export class TableFooterComponent implements OnInit {
 
-  @Input() page: number;
-  @Input() pageSize: number;
-  @Input() person: Persons[];
-  @Output() pageEvent = new EventEmitter<number>();
+  @Input() person: Member[];
+  page = this.pagination.page;
+  pageSize = this.pagination.pageSize;
 
-  constructor() { }
+  constructor(public pagination: PaginationService) { }
 
   ngOnInit(): void {
   }
   pageChange(page:number){
-    this.pageEvent.emit(page);
+    this.pagination.pageChange(page);
+  }
+  lastItem(person){
+    return this.pagination.lastItem(person);
+  }
+  firstItem(){
+    return this.pagination.firstItem();
   }
 
 }
