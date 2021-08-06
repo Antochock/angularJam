@@ -1,6 +1,6 @@
 <app-page-header>
   <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
-      <app-btn routerLink="/member/new">New member</app-btn>
+      <app-btn [queryParams]="{page:'dashboard'}" routerLink="/member/new">New member</app-btn>
 </app-page-header>
 <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8"> 
     <div class="flex flex-col">
@@ -26,8 +26,8 @@
                 <app-table>
                     <app-table-header [titles]=tableHeaders></app-table-header>
                     <app-table-body>
-                        <app-table-tr *ngFor = 'let person of memberService.persons| slice: (this.pagination.page-1) * this.pagination.pageSize : this.pagination.page * this.pagination.pageSize' >
-                            <app-table-td [person] = person></app-table-td>
+                        <app-table-tr *ngFor = 'let person of memberService.persons$ | async | slice: (this.pagination.page-1) * this.pagination.pageSize : this.pagination.page * this.pagination.pageSize' >
+                            <app-table-td [person] = person [params] = params></app-table-td>
                         </app-table-tr>
                     </app-table-body>
                 </app-table>

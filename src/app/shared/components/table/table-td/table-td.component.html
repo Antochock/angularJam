@@ -42,7 +42,7 @@
   "
 >
 <div class="text-sm text-gray-900">
-  {{person.title}} 
+  {{person.title}}
 </div>
 </td>
 <td
@@ -54,7 +54,7 @@
     font-medium
   "
 >
-  <a [routerLink]= "['/member' , person.id]"
+  <a [queryParams]= params [routerLink]= "['/member' , person.id]"
     href="#"
     class="text-indigo-600 hover:text-indigo-900"
     >Edit</a

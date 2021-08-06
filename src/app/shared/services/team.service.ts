@@ -1,14 +1,13 @@
-import { Member } from './../models/member.model';
 import { persons } from './../../mocks/people.mock';
+import { Member } from './../models/member.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MemberService {
-
-  constructor() { }
+export class TeamService {
+  constructor(){}
 
   persons$ = new BehaviorSubject<Member[]>([...persons]);
 

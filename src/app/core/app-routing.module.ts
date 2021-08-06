@@ -1,3 +1,4 @@
+import { TeamModule } from './../pages/team/team.module';
 import { DashboardModule } from './../pages/dashboard/dashboard.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,6 +9,12 @@ const routes: Routes = [
     loadChildren: ()=>
       import('../pages/dashboard/dashboard.module').then(
       (m) => m.DashboardModule),
+  },
+  {
+    path: 'team',
+    loadChildren: ()=>
+      import('../pages/team/team.module').then(
+      (m) => m.TeamModule),
   },
   {
     path: 'member',

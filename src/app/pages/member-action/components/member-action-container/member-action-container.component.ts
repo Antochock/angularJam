@@ -1,3 +1,4 @@
+import { TeamService } from './../../../../shared/services/team.service';
 import { State } from './../../../../shared/models/state.model';
 import { MemberService } from './../../../../shared/services/member.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,8 +15,13 @@ export class MemberActionContainerComponent implements OnInit {
   form: FormGroup;
   state: State;
   actionTitle: string;
+  page: string;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, public memberService: MemberService, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router,
+     private formBuilder: FormBuilder,
+     public memberService: MemberService,
+     public activatedRoute: ActivatedRoute,
+     private teamService: TeamService) { }
 
   ngOnInit(): void {
     this.initView();
@@ -24,6 +30,7 @@ export class MemberActionContainerComponent implements OnInit {
 
   initView(){
     this.state = this.activatedRoute.snapshot.data.state;
+    this.page = this.activatedRoute.snapshot.queryParams.page;
     this.actionTitle = this.state === State.Create ? 'Create' : 'Update';
   }
 
@@ -44,19 +51,42 @@ export class MemberActionContainerComponent implements OnInit {
       }
     )
     if (this.state === State.Edit){
-      const member = this.memberService.getMember(
-        this.activatedRoute.snapshot.params.id
-      );
+      const member = this.getMember(this.activatedRoute.snapshot.params.id)
       this.form.patchValue(member);
     }
   }
   
   action(): void{
     if (this.state === State.Edit){
-      this.memberService.editMember(this.activatedRoute.snapshot.params.id, this.form.value);
+      this.editMember(this.activatedRoute.snapshot.params.id, this.form.value);
     }else{
-    this.memberService.addMember(this.form.value);}
-    this.router.navigate(["/dashboard"])
+    this.addMember(this.form.value);}
+    this.router.navigate([`/${this.page}`])
   }
+
+  addMember(data){
+    this.actionService().addMember(data)
+  }
+  editMember(id: string, data){
+    this.actionService().editMember(id, data);
+    
+  }
+  getMember(id: string){ 
+    return this.actionService().getMember(id);    
+  }
+
+  actionService() {
+    let action;
+    switch (this.page){
+      case 'dashboard':
+        action = this.memberService;
+        break;
+      case 'team':
+        action = this.teamService;
+        break;
+    }
+    return action;
+  }
+
 
 }

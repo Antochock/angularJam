@@ -1,16 +1,17 @@
 import { PaginationService } from './../../../../shared/services/pagination.service';
-import { MemberService } from './../../../../shared/services/member.service';
+import { TeamService } from './../../../../shared/services/team.service';
 import { persons } from './../../../../mocks/people.mock';
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TableTitle } from 'src/app/shared/components/table/table-header/@types/table-header.model';
 
 @Component({
-  selector: 'app-dashboard-container',
-  templateUrl: './dashboard-container.component.html',
-  styleUrls: ['./dashboard-container.component.scss']
+  selector: 'app-team-container',
+  templateUrl: './team-container.component.html',
+  styleUrls: ['./team-container.component.scss']
 })
-export class DashboardContainerComponent implements OnInit {
+export class TeamContainerComponent implements OnInit {
 
+  
   tableHeaders: TableTitle[] = [
     {
       text: 'Name',
@@ -34,14 +35,11 @@ export class DashboardContainerComponent implements OnInit {
   },
   ]
   persons = persons;
-  params = {page:'dashboard'};
+  params = {page:'team'};
 
-  constructor(public memberService: MemberService, public pagination: PaginationService) { }
+  constructor(public teamService: TeamService, public pagination:PaginationService) { }
 
   ngOnInit(): void {
   }
-
-
-
 
 }

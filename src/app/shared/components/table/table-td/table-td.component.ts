@@ -1,5 +1,6 @@
 import { Member } from './../../../models/member.model';
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-table-td',
@@ -9,10 +10,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TableTdComponent implements OnInit {
 
   @Input() person: Member;
-
-  constructor() { }
+  @Input() params;
+  constructor(
+    public activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
+    
   }
 
 }
