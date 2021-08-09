@@ -21,6 +21,12 @@ const routes: Routes = [
     loadChildren: ()=>
       import('../pages/member-action/member-action.module').then(
       (m) => m.MemberActionModule),
+  },
+  {
+    path: 'post',
+    loadChildren: ()=>
+      import('../pages/posts/posts.module').then(
+      (m) => m.PostsModule),
   }
 ];
 
