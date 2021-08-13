@@ -1,5 +1,6 @@
 <app-page-header>
-  <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+  <h1 tooltip='Sample text' class="text-3xl font-bold text-gray-900">Dashboard</h1>
+      <app-btn (click)= openModal()>Open Modal</app-btn>
       <app-btn [queryParams]="{page:'dashboard'}" routerLink="/member/new">New member</app-btn>
 </app-page-header>
 <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8"> 

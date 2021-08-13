@@ -19,6 +19,7 @@ import { BtnComponent } from './btn/btn.component';
 import { TableFooterComponent } from './table/table-footer/table-footer.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import { InputComponent } from './input/input.component';
+import { ModalComponent } from './modal/modal/modal.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { InputComponent } from './input/input.component';
     BtnComponent,
     TableFooterComponent,
     InputComponent,
+    ModalComponent,
     
   ],
   imports: [CommonModule, RouterModule, NgbPaginationModule],
@@ -62,6 +64,7 @@ import { InputComponent } from './input/input.component';
     TableFooterComponent,
     NgbPaginationModule,
     InputComponent,
+    ModalComponent,
   ],
 })
 export class ComponentsModule {}
